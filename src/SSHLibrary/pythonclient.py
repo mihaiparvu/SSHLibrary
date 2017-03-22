@@ -167,8 +167,8 @@ class SFTPClient(AbstractSFTPClient):
         path = path.encode(self._encoding)
         if not self._is_windows_path(path):
             path = self._client.normalize(path)
-        if not is_string(path):
-            path = unic(path)
+        if not is_unicode(path):
+            path = path.decode(self._encoding)
         return path
 
     def _is_windows_path(self, path):
